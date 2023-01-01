@@ -26,7 +26,7 @@ module accumulator #
 	// is performed. This means that the accumulator stores the most
 	// negative number it can hold - i.e., all the bits are cleared
 	// (1'b0) except for the sign bit (MSB), which is set (1'b1).
-	localparam [ACCUM_SZ-1:0] SAT_HI_VAL = {1'b0, {(ACCUM_SZ-1){1'b1}}};
+	localparam [ACCUM_SZ-1:0] SAT_HIGH_VAL = {1'b0, {(ACCUM_SZ-1){1'b1}}};
 	localparam [ACCUM_SZ-1:0] SAT_LOW_VAL = {1'b1, {(ACCUM_SZ-1){1'b0}}};
 	
 	// ==== Internal Signals ====
@@ -55,7 +55,7 @@ module accumulator #
 			accum_reg <= {ACCUM_SZ{1'b0}};
 		end else begin
 			if (sat_high) begin
-				accum_reg <= SAT_HI_VAL;
+				accum_reg <= SAT_HIGH_VAL;
 			end else if (sat_low) begin
 				accum_reg <= SAT_LOW_VAL;
 			end else begin
